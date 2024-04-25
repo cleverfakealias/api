@@ -13,7 +13,7 @@ async def send_email(request: Any, response: Any) -> JSONResponse:
     message: str = data.get('message')
 
     email_message = Mail(
-        from_email='web@benhickman.dev',  # Replace with your SendGrid email
+        from_email='no-reply@benhickman.dev',  # Replace with your SendGrid email
         to_emails=email,
         subject='Contact Form Message',
         plain_text_content=f'Message from {name} ({email}): {message}'
