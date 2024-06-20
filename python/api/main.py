@@ -2,7 +2,7 @@ import logging
 from fastapi import FastAPI, HTTPException, Request
 from typing import Dict, Any
 from starlette.responses import JSONResponse
-from send_email import send_email
+from .send_email import send_email
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
