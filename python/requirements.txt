@@ -1,2 +1,7 @@
-sendgrid==6.9.2
-fastapi==0.68.1
+fastapi
+starlette
+sendgrid
+pydantic
+uvicorn
+pytest
+httpx

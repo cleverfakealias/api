@@ -14,7 +14,7 @@ app = FastAPI()
 async def send_email_endpoint(request: Request) -> JSONResponse:
     try:
         # Log the incoming request
-        request_data = request.json()
+        request_data = await request.json()
         logger.info(f"Received request: {request_data}")
 
         # Process the request and send the email
