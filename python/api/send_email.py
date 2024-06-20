@@ -7,6 +7,8 @@ from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
 
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(levelname)s:%(message)s')
 logger = logging.getLogger(__name__)
 
 # Fetch the SendGrid API key once and store it in a variable
@@ -37,12 +39,12 @@ def send_email(name, email, message):
         response = sg.send(message)
         if response.status_code != 202:
             logger.error(f"Failed to send email, status code: {response.status_code}")
-            return {'status': 'error', 'message': 'Failed to send email'}, HTTPStatus.INTERNAL_SERVER_ERROR
+            return {'status': 'error', 'message': 'Non 200 response received. Failed to send email'}, HTTPStatus.INTERNAL_SERVER_ERROR
         return {'status': 'success'}, HTTPStatus.OK
     except Exception as e:
         # Log the actual error message
         logger.error(f"Error occurred: {str(e)}")
-        return {'status': 'error', 'message': 'Failed to send email'}, HTTPStatus.INTERNAL_SERVER_ERROR
+        return {'status': 'error', 'message': 'Exception occured. Failed to send email'}, HTTPStatus.INTERNAL_SERVER_ERROR
 
 
 # async def handler(req, res):

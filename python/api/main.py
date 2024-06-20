@@ -5,7 +5,7 @@ from starlette.responses import JSONResponse
 from .send_email import send_email
 
 # Configure logging
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.INFO, format='%(levelname)s:%(message)s')
 logger = logging.getLogger(__name__)
 
 app = FastAPI()
